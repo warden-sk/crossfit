@@ -4,7 +4,7 @@
 
 import EveryMinuteOnTheMinuteTimer from "./EveryMinuteOnTheMinuteTimer.js";
 
-const $ = new EveryMinuteOnTheMinuteTimer(2);
+const $ = new EveryMinuteOnTheMinuteTimer(10);
 
 $.assignElements(
   document.getElementById("minutes")!,

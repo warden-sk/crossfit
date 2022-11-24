@@ -9,7 +9,7 @@ const INDICATOR_ELEMENT = document.getElementById("indicator");
 class EveryMinuteOnTheMinuteTimer extends Timer {
   currentRound: number = 0;
 
-  constructor(private rounds: number, private secondsPerRound: number = 2) {
+  constructor(private rounds: number, private secondsPerRound: number = 60) {
     super();
   }
 
