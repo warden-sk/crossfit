@@ -2,19 +2,15 @@
  * Copyright 2022 Marek Kobida
  */
 class Timer {
+    minutes;
+    seconds;
     m;
     s;
     interval;
-    minutes = 0;
-    seconds = 0;
-    assignElements({ minutes, seconds, }) {
-        this.m = minutes;
-        this.s = seconds;
+    constructor(minutes = 0, seconds = 0) {
+        this.minutes = minutes;
+        this.seconds = seconds;
     }
-    secondsFromStart() {
-        return this.minutes * 60 + this.seconds;
-    }
-    //
     addSeconds(seconds) {
         const next = this.seconds + seconds;
         if (next !== 60) {
@@ -24,8 +20,15 @@ class Timer {
             this.updateTime(this.minutes + 1, 0);
         }
     }
+    assignElements(m, s) {
+        this.m = m;
+        this.s = s;
+    }
     before(minutes, seconds) {
         return [0, 0];
+    }
+    secondsFromStart() {
+        return this.minutes * 60 + this.seconds;
     }
     start(ms = 1000) {
         if (typeof this.interval === "undefined") {

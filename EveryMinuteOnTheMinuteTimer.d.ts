@@ -1,7 +1,7 @@
 import Timer from "./Timer.js";
 declare class EveryMinuteOnTheMinuteTimer extends Timer {
-    readonly rounds: number;
-    readonly secondsPerRound: number;
+    private rounds;
+    private secondsPerRound;
     currentRound: number;
     constructor(rounds: number, secondsPerRound?: number);
     addRound(): void;

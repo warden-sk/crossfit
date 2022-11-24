@@ -8,25 +8,7 @@ class Timer {
 
   interval?: number;
 
-  minutes: number = 0;
-  seconds: number = 0;
-
-  assignElements({
-    minutes,
-    seconds,
-  }: {
-    minutes: HTMLElement;
-    seconds: HTMLElement;
-  }) {
-    this.m = minutes;
-    this.s = seconds;
-  }
-
-  secondsFromStart(): number {
-    return this.minutes * 60 + this.seconds;
-  }
-
-  //
+  constructor(private minutes: number = 0, private seconds: number = 0) {}
 
   addSeconds(seconds: number) {
     const next = this.seconds + seconds;
@@ -38,8 +20,17 @@ class Timer {
     }
   }
 
+  assignElements(m: HTMLElement, s: HTMLElement) {
+    this.m = m;
+    this.s = s;
+  }
+
   before(minutes: number, seconds: number): [number, number] {
     return [0, 0];
+  }
+
+  secondsFromStart(): number {
+    return this.minutes * 60 + this.seconds;
   }
 
   start(ms = 1000) {
