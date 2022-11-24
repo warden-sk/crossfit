@@ -1,3 +1,7 @@
+/*
+ * Copyright 2022 Marek Kobida
+ */
+
 import EveryMinuteOnTheMinuteTimer from "./EveryMinuteOnTheMinuteTimer.js";
 
 const $ = new EveryMinuteOnTheMinuteTimer(2);

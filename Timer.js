@@ -1,3 +1,6 @@
+/*
+ * Copyright 2022 Marek Kobida
+ */
 class Timer {
     m;
     s;
