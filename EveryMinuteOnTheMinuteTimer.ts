@@ -7,7 +7,7 @@ import Timer from "./Timer.js";
 const INDICATOR_ELEMENT = document.getElementById("indicator");
 
 class EveryMinuteOnTheMinuteTimer extends Timer {
-  currentRound: number = 0;
+  private currentRound: number = 0;
 
   constructor(private rounds: number, private secondsPerRound: number = 60) {
     super();
@@ -24,7 +24,7 @@ class EveryMinuteOnTheMinuteTimer extends Timer {
     }
   }
 
-  before(minutes: number, seconds: number): [number, number] {
+  onUpdateTime(minutes: number, seconds: number): [number, number] {
     if ((this.secondsFromStart() + 1) % this.secondsPerRound === 0) {
       this.addRound();
 

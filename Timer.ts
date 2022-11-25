@@ -3,18 +3,18 @@
  */
 
 class Timer {
-  m?: HTMLElement;
-  s?: HTMLElement;
+  private m?: HTMLElement;
+  private s?: HTMLElement;
 
-  interval?: number;
+  private interval?: number;
 
   constructor(private minutes: number = 0, private seconds: number = 0) {}
 
-  addSeconds(seconds: number) {
-    const next = this.seconds + seconds;
+  addSeconds() {
+    const $ = this.seconds + 1;
 
-    if (next !== 60) {
-      this.updateTime(this.minutes, next);
+    if ($ !== 60) {
+      this.updateTime(this.minutes, $);
     } else {
       this.updateTime(this.minutes + 1, 0);
     }
@@ -25,7 +25,7 @@ class Timer {
     this.s = s;
   }
 
-  before(minutes: number, seconds: number): [number, number] {
+  onUpdateTime(minutes: number, seconds: number): [number, number] {
     return [0, 0];
   }
 
@@ -35,7 +35,7 @@ class Timer {
 
   start(ms = 1000) {
     if (typeof this.interval === "undefined") {
-      this.interval = setInterval(() => this.addSeconds(1), ms);
+      this.interval = setInterval(() => this.addSeconds(), ms);
     }
   }
 
@@ -50,7 +50,7 @@ class Timer {
   }
 
   updateTime(minutes: number, seconds: number) {
-    const [m, s] = this.before(minutes, seconds);
+    const [m, s] = this.onUpdateTime(minutes, seconds);
 
     this.minutes = m;
     this.seconds = s;
