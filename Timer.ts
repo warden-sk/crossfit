@@ -8,34 +8,20 @@ class Timer {
 
   private interval?: number;
 
-  constructor(private minutes: number = 0, private seconds: number = 0) {}
-
-  addSeconds() {
-    const $ = this.seconds + 1;
-
-    if ($ !== 60) {
-      this.updateTime(this.minutes, $);
-    } else {
-      this.updateTime(this.minutes + 1, 0);
-    }
-  }
+  constructor(public seconds: number = 0) {}
 
   assignElements(m: HTMLElement, s: HTMLElement) {
     this.m = m;
     this.s = s;
   }
 
-  onUpdateTime(minutes: number, seconds: number): [number, number] {
-    return [0, 0];
-  }
-
-  secondsFromStart(): number {
-    return this.minutes * 60 + this.seconds;
+  enhancedSeconds(seconds: number): number {
+    return seconds;
   }
 
   start(ms = 1000) {
     if (typeof this.interval === "undefined") {
-      this.interval = setInterval(() => this.addSeconds(), ms);
+      this.interval = setInterval(() => this.updateTime(this.seconds + 1), ms);
     }
   }
 
@@ -49,11 +35,11 @@ class Timer {
     /* (2) */ this.interval = undefined;
   }
 
-  updateTime(minutes: number, seconds: number) {
-    const [m, s] = this.onUpdateTime(minutes, seconds);
+  updateTime(seconds: number) {
+    this.seconds = this.enhancedSeconds(seconds);
 
-    this.minutes = m;
-    this.seconds = s;
+    const m = ~~(this.seconds / 60);
+    const s = this.seconds - m * 60;
 
     this.m && (this.m.textContent = m < 10 ? `0${m}` : `${m}`);
     this.s && (this.s.textContent = s < 10 ? `0${s}` : `${s}`);

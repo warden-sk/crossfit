@@ -24,14 +24,14 @@ class EveryMinuteOnTheMinuteTimer extends Timer {
     }
   }
 
-  onUpdateTime(minutes: number, seconds: number): [number, number] {
-    if ((this.secondsFromStart() + 1) % this.secondsPerRound === 0) {
+  enhancedSeconds(seconds: number): number {
+    if ((this.seconds + 1) % this.secondsPerRound === 0) {
       this.addRound();
 
-      return [0, 0];
+      return 0;
     }
 
-    return [minutes, seconds];
+    return seconds;
   }
 
   start() {
