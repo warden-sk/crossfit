@@ -3,9 +3,12 @@ declare class EveryMinuteOnTheMinuteTimer extends Timer {
     private rounds;
     private secondsPerRound;
     private currentRound;
-    constructor(rounds: number, secondsPerRound?: number);
+    constructor(elements: {
+        m: HTMLElement;
+        s: HTMLElement;
+    }, rounds: number, secondsPerRound?: number);
     addRound(): void;
-    enhancedSeconds(seconds: number): number;
+    enhanceSeconds(seconds: number): number;
     start(): void;
 }
 export default EveryMinuteOnTheMinuteTimer;

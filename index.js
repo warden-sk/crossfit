@@ -8,9 +8,12 @@ function toNumber(input) {
         return +input;
     }
 }
+const elements = {
+    m: document.getElementById("minutes"),
+    s: document.getElementById("seconds"),
+};
 const rounds = toNumber(url.searchParams.get("rounds")) ?? 10;
 const secondsPerRound = toNumber(url.searchParams.get("secondsPerRound")) ?? 60;
-const $ = new EveryMinuteOnTheMinuteTimer(rounds, secondsPerRound);
-$.assignElements(document.getElementById("minutes"), document.getElementById("seconds"));
+const $ = new EveryMinuteOnTheMinuteTimer(elements, rounds, secondsPerRound);
 document.getElementById("start")?.addEventListener("click", () => $.start());
 document.getElementById("stop")?.addEventListener("click", () => $.stop());

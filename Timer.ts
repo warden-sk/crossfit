@@ -3,19 +3,14 @@
  */
 
 class Timer {
-  private m?: HTMLElement;
-  private s?: HTMLElement;
-
   private interval?: number;
 
-  constructor(public seconds: number = 0) {}
+  constructor(
+    private elements: { m: HTMLElement; s: HTMLElement },
+    public seconds: number = 0
+  ) {}
 
-  assignElements(m: HTMLElement, s: HTMLElement) {
-    this.m = m;
-    this.s = s;
-  }
-
-  enhancedSeconds(seconds: number): number {
+  enhanceSeconds(seconds: number): number {
     return seconds;
   }
 
@@ -36,13 +31,15 @@ class Timer {
   }
 
   updateTime(seconds: number) {
-    this.seconds = this.enhancedSeconds(seconds);
+    this.seconds = this.enhanceSeconds(seconds);
 
     const m = ~~(this.seconds / 60);
     const s = this.seconds - m * 60;
 
-    this.m && (this.m.textContent = m < 10 ? `0${m}` : `${m}`);
-    this.s && (this.s.textContent = s < 10 ? `0${s}` : `${s}`);
+    this.elements.m &&
+      (this.elements.m.textContent = m < 10 ? `0${m}` : `${m}`);
+    this.elements.s &&
+      (this.elements.s.textContent = s < 10 ? `0${s}` : `${s}`);
   }
 }
 
