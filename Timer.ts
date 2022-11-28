@@ -22,6 +22,8 @@ class Timer {
 
   stop() {
     if (typeof this.interval === "undefined") {
+      this.updateTime(0);
+
       return;
     }
 
@@ -34,10 +36,12 @@ class Timer {
     this.seconds = this.enhanceSeconds(seconds);
 
     const m = ~~(this.seconds / 60);
-    const s = this.seconds - m * 60;
 
     this.elements.m &&
       (this.elements.m.textContent = m < 10 ? `0${m}` : `${m}`);
+
+    const s = this.seconds - m * 60;
+
     this.elements.s &&
       (this.elements.s.textContent = s < 10 ? `0${s}` : `${s}`);
   }
