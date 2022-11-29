@@ -8,7 +8,6 @@ class Timer {
     constructor(nodes, seconds = 0) {
         this.nodes = nodes;
         this.seconds = seconds;
-        setInterval(() => this.updateTextOfNode(document.querySelector("#last"), ("localStorage" in window).toString()), 1000);
     }
     enhanceSeconds(seconds) {
         return seconds;

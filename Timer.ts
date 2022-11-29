@@ -12,16 +12,7 @@ interface TimerNodes {
 class Timer {
   interval?: number | undefined;
 
-  constructor(private nodes: TimerNodes, public seconds: number = 0) {
-    setInterval(
-      () =>
-        this.updateTextOfNode(
-          document.querySelector("#last")!,
-          ("localStorage" in window).toString()
-        ),
-      1000
-    );
-  }
+  constructor(private nodes: TimerNodes, public seconds: number = 0) {}
 
   enhanceSeconds(seconds: number): number {
     return seconds;
