@@ -14,15 +14,12 @@ interface TimerNodes {
 class Timer {
   private interval?: number | undefined;
 
-  private last: number = toNumber(localStorage.getItem("last")) ?? 0; // dokončiť
-
   constructor(private nodes: TimerNodes, public seconds: number = 0) {
-    // dokončiť
     setInterval(
       () =>
         this.updateTextOfNode(
           document.querySelector("#last")!,
-          this.last.toString()
+          typeof window.localStorage
         ),
       1000
     );
@@ -35,10 +32,6 @@ class Timer {
   start(ms = 1000) {
     if (typeof this.interval === "undefined") {
       this.interval = setInterval(() => this.updateTime(this.seconds + 1), ms);
-
-      // dokončiť
-      this.last = +new Date();
-      localStorage.setItem("last", this.last.toString());
     }
   }
 

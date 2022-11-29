@@ -1,17 +1,14 @@
 /*
  * Copyright 2022 Marek Kobida
  */
-import toNumber from "./toNumber.js";
 class Timer {
     nodes;
     seconds;
     interval;
-    last = toNumber(localStorage.getItem("last")) ?? 0; // dokončiť
     constructor(nodes, seconds = 0) {
         this.nodes = nodes;
         this.seconds = seconds;
-        // dokončiť
-        setInterval(() => this.updateTextOfNode(document.querySelector("#last"), this.last.toString()), 1000);
+        setInterval(() => this.updateTextOfNode(document.querySelector("#last"), typeof window.localStorage), 1000);
     }
     enhanceSeconds(seconds) {
         return seconds;
@@ -19,9 +16,6 @@ class Timer {
     start(ms = 1000) {
         if (typeof this.interval === "undefined") {
             this.interval = setInterval(() => this.updateTime(this.seconds + 1), ms);
-            // dokončiť
-            this.last = +new Date();
-            localStorage.setItem("last", this.last.toString());
         }
     }
     stop() {
