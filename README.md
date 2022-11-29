@@ -1,8 +1,10 @@
 # How?
 
-The domain is `https://warden-sk.github.io/crossfit/`
+## Domain
 
-## Available URL parameters
+https://warden-sk.github.io/crossfit/
+
+### Available domain parameters
 
 |            name |                        type |                             |
 |----------------:|----------------------------:|----------------------------:|
@@ -10,4 +12,4 @@ The domain is `https://warden-sk.github.io/crossfit/`
 | secondsPerRound |                      number |                          60 |
 |     workoutName | EveryMinuteOnTheMinuteTimer | EveryMinuteOnTheMinuteTimer |
 
-`https://warden-sk.github.io/crossfit/?rounds=10&secondsPerRound=60`
+https://warden-sk.github.io/crossfit/?rounds=5&secondsPerRound=120
