@@ -1,11 +1,13 @@
-# Ako to funguje?
+# How?
 
-Doména je `https://warden-sk.github.io/crossfit/`
+The domain is `https://warden-sk.github.io/crossfit/`
 
-|            name |                        type |
-|----------------:|----------------------------:|
-|          rounds |                      number |
-| secondsPerRound |                      number |
-|     workoutName | EveryMinuteOnTheMinuteTimer |
+## Available URL parameters
 
-Príklad: `https://warden-sk.github.io/crossfit/?rounds=10&secondsPerRound=60`
+|            name |                        type |                             |
+|----------------:|----------------------------:|----------------------------:|
+|          rounds |                      number |                          10 |
+| secondsPerRound |                      number |                          60 |
+|     workoutName | EveryMinuteOnTheMinuteTimer | EveryMinuteOnTheMinuteTimer |
+
+`https://warden-sk.github.io/crossfit/?rounds=10&secondsPerRound=60`
