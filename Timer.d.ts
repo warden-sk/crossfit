@@ -12,6 +12,7 @@ declare class Timer {
     enhanceSeconds(seconds: number): number;
     start(ms?: number): void;
     stop(): void;
+    updateTextOfNode(node: Node | undefined, text: string): void;
     updateTime(seconds: number): void;
 }
 export default Timer;

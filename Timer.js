@@ -25,14 +25,15 @@ class Timer {
         /* (1) */ clearInterval(this.interval);
         /* (2) */ this.interval = undefined;
     }
+    updateTextOfNode(node, text) {
+        node && (node.textContent = text);
+    }
     updateTime(seconds) {
         this.seconds = this.enhanceSeconds(seconds);
         const m = ~~(this.seconds / 60);
-        this.nodes.minutes &&
-            (this.nodes.minutes.textContent = m < 10 ? `0${m}` : `${m}`);
+        this.updateTextOfNode(this.nodes.minutes, m < 10 ? `0${m}` : `${m}`);
         const s = this.seconds - m * 60;
-        this.nodes.seconds &&
-            (this.nodes.seconds.textContent = s < 10 ? `0${s}` : `${s}`);
+        this.updateTextOfNode(this.nodes.seconds, s < 10 ? `0${s}` : `${s}`);
     }
 }
 export default Timer;
