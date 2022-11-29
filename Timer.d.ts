@@ -7,7 +7,7 @@ interface TimerNodes {
 declare class Timer {
     private nodes;
     seconds: number;
-    private interval?;
+    interval?: number | undefined;
     constructor(nodes: TimerNodes, seconds?: number);
     enhanceSeconds(seconds: number): number;
     start(ms?: number): void;

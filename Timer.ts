@@ -10,7 +10,7 @@ interface TimerNodes {
 }
 
 class Timer {
-  private interval?: number | undefined;
+  interval?: number | undefined;
 
   constructor(private nodes: TimerNodes, public seconds: number = 0) {
     setInterval(

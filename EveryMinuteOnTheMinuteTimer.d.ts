@@ -7,5 +7,6 @@ declare class EveryMinuteOnTheMinuteTimer extends Timer {
     addRound(): void;
     enhanceSeconds(seconds: number): number;
     start(): void;
+    stop(): void;
 }
 export default EveryMinuteOnTheMinuteTimer;

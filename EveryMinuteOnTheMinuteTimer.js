@@ -37,5 +37,12 @@ class EveryMinuteOnTheMinuteTimer extends Timer {
             indicator && (indicator.textContent = this.currentRound.toString());
         }
     }
+    stop() {
+        super.stop();
+        if (typeof this.interval === "undefined") {
+            this.currentRound = 0;
+            indicator && (indicator.textContent = this.currentRound.toString());
+        }
+    }
 }
 export default EveryMinuteOnTheMinuteTimer;
