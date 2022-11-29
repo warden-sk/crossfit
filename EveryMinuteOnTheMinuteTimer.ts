@@ -11,7 +11,7 @@ class EveryMinuteOnTheMinuteTimer extends Timer {
 
   constructor(
     nodes: { m: Node; s: Node },
-    private rounds: number,
+    private rounds: number = 10,
     private secondsPerRound: number = 60
   ) {
     super(nodes);

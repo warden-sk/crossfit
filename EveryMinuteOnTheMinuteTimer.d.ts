@@ -6,7 +6,7 @@ declare class EveryMinuteOnTheMinuteTimer extends Timer {
     constructor(nodes: {
         m: Node;
         s: Node;
-    }, rounds: number, secondsPerRound?: number);
+    }, rounds?: number, secondsPerRound?: number);
     addRound(): void;
     enhanceSeconds(seconds: number): number;
     start(): void;

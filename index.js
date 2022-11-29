@@ -12,9 +12,14 @@ const nodes = {
     m: document.querySelector("#minutes"),
     s: document.querySelector("#seconds"),
 };
-const rounds = toNumber(url.searchParams.get("rounds")) ?? 10;
-const secondsPerRound = toNumber(url.searchParams.get("secondsPerRound")) ?? 60;
-const workout = new EveryMinuteOnTheMinuteTimer(nodes, rounds, secondsPerRound);
+const rounds = toNumber(url.searchParams.get("rounds"));
+const secondsPerRound = toNumber(url.searchParams.get("secondsPerRound"));
+const workoutName = url.searchParams.get("workoutName") ?? "EveryMinuteOnTheMinuteTimer";
+const workouts = { EveryMinuteOnTheMinuteTimer };
+const workoutByName = workouts[workoutName];
+const workout = workoutByName
+    ? new workoutByName(nodes)
+    : new EveryMinuteOnTheMinuteTimer(nodes, rounds, secondsPerRound);
 document
     .getElementById("start")
     ?.addEventListener("click", () => workout.start());

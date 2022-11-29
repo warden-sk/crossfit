@@ -3,6 +3,7 @@
  */
 
 import EveryMinuteOnTheMinuteTimer from "./EveryMinuteOnTheMinuteTimer.js";
+import Timer from "./Timer.js";
 
 const url = new URL(location.toString());
 
@@ -16,10 +17,21 @@ const nodes = {
   m: document.querySelector("#minutes")!,
   s: document.querySelector("#seconds")!,
 };
-const rounds = toNumber(url.searchParams.get("rounds")) ?? 10;
-const secondsPerRound = toNumber(url.searchParams.get("secondsPerRound")) ?? 60;
+const rounds = toNumber(url.searchParams.get("rounds"));
+const secondsPerRound = toNumber(url.searchParams.get("secondsPerRound"));
 
-const workout = new EveryMinuteOnTheMinuteTimer(nodes, rounds, secondsPerRound);
+const workoutName =
+  url.searchParams.get("workoutName") ?? "EveryMinuteOnTheMinuteTimer";
+
+const workouts: {
+  [workoutName: string]: new (nodes: { m: Node; s: Node }) => Timer;
+} = { EveryMinuteOnTheMinuteTimer };
+
+const workoutByName = workouts[workoutName];
+
+const workout = workoutByName
+  ? new workoutByName(nodes)
+  : new EveryMinuteOnTheMinuteTimer(nodes, rounds, secondsPerRound);
 
 document
   .getElementById("start")
