@@ -3,6 +3,7 @@
     "allowSyntheticDefaultImports": true,
     "declaration": true,
     "esModuleInterop": true,
+    "noUncheckedIndexedAccess": true,
     "strict": true,
     "target": "ESNext"
   }
