@@ -28,14 +28,19 @@ const workoutName: string =
   url.searchParams.get("workoutName") ?? "EveryMinuteOnTheMinuteTimer";
 
 const workouts: {
-  [workoutName: string]: new (nodes: Timer["nodes"]) => Timer;
-} = { EveryMinuteOnTheMinuteTimer };
+  [workoutName: string]: [new (...$: any[]) => Timer, any[]]; //dokončiť
+} = {
+  EveryMinuteOnTheMinuteTimer: [
+    EveryMinuteOnTheMinuteTimer,
+    [nodes, rounds, secondsPerRound],
+  ],
+};
 
 const workoutByName = workouts[workoutName];
 
 const workout = workoutByName
-  ? new workoutByName(nodes)
-  : new EveryMinuteOnTheMinuteTimer(nodes, rounds, secondsPerRound);
+  ? new workoutByName[0](...workoutByName[1])
+  : new Timer(nodes);
 
 nodes.startButton?.addEventListener("click", () => workout.start());
 nodes.stopButton?.addEventListener("click", () => workout.stop());

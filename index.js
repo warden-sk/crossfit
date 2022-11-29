@@ -2,6 +2,7 @@
  * Copyright 2022 Marek Kobida
  */
 import EveryMinuteOnTheMinuteTimer from "./EveryMinuteOnTheMinuteTimer.js";
+import Timer from "./Timer.js";
 const url = new URL(location.toString());
 function toNumber(input) {
     if (input && /[0-9]+/.test(input)) {
@@ -17,10 +18,15 @@ const nodes = {
 const rounds = toNumber(url.searchParams.get("rounds"));
 const secondsPerRound = toNumber(url.searchParams.get("secondsPerRound"));
 const workoutName = url.searchParams.get("workoutName") ?? "EveryMinuteOnTheMinuteTimer";
-const workouts = { EveryMinuteOnTheMinuteTimer };
+const workouts = {
+    EveryMinuteOnTheMinuteTimer: [
+        EveryMinuteOnTheMinuteTimer,
+        [nodes, rounds, secondsPerRound],
+    ],
+};
 const workoutByName = workouts[workoutName];
 const workout = workoutByName
-    ? new workoutByName(nodes)
-    : new EveryMinuteOnTheMinuteTimer(nodes, rounds, secondsPerRound);
+    ? new workoutByName[0](...workoutByName[1])
+    : new Timer(nodes);
 nodes.startButton?.addEventListener("click", () => workout.start());
 nodes.stopButton?.addEventListener("click", () => workout.stop());
