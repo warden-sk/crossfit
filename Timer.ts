@@ -2,8 +2,6 @@
  * Copyright 2022 Marek Kobida
  */
 
-import toNumber from "./toNumber.js";
-
 interface TimerNodes {
   minutes?: Node;
   seconds?: Node;
@@ -19,7 +17,7 @@ class Timer {
       () =>
         this.updateTextOfNode(
           document.querySelector("#last")!,
-          typeof window.localStorage
+          ("localStorage" in window).toString()
         ),
       1000
     );
