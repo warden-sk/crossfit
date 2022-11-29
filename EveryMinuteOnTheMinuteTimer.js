@@ -12,15 +12,13 @@ class EveryMinuteOnTheMinuteTimer extends Timer {
         super(nodes);
         this.rounds = rounds;
         this.secondsPerRound = secondsPerRound;
-        indicator &&
-            (indicator.textContent = this.currentRound.toString());
+        indicator && (indicator.textContent = this.currentRound.toString());
         text &&
             (text.textContent = `of ${rounds} round(s)\n${secondsPerRound} second(s) per round`);
     }
     addRound() {
         this.currentRound++;
-        indicator &&
-            (indicator.textContent = this.currentRound.toString());
+        indicator && (indicator.textContent = this.currentRound.toString());
         if (this.currentRound === this.rounds) {
             this.stop();
         }
@@ -36,8 +34,7 @@ class EveryMinuteOnTheMinuteTimer extends Timer {
         super.start();
         if (this.currentRound === this.rounds) {
             this.currentRound = 0;
-            indicator &&
-                (indicator.textContent = this.currentRound.toString());
+            indicator && (indicator.textContent = this.currentRound.toString());
         }
     }
 }
