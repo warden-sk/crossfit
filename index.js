@@ -17,9 +17,9 @@ const nodes = {
 };
 const rounds = toNumber(url.searchParams.get("rounds"));
 const secondsPerRound = toNumber(url.searchParams.get("secondsPerRound"));
-const workoutName = url.searchParams.get("workoutName") ?? "EveryMinuteOnTheMinuteTimer";
+const workoutName = url.searchParams.get("workoutName") ?? "EveryMinuteOnTheMinute";
 const workouts = {
-    EveryMinuteOnTheMinuteTimer: [
+    EveryMinuteOnTheMinute: [
         EveryMinuteOnTheMinuteTimer,
         [nodes, rounds, secondsPerRound],
     ],

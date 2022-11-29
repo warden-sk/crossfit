@@ -2,7 +2,7 @@ body {
   background-color: hsl(0, 0%, 12.5%);
   color: hsl(0, 0%, 87.5%);
   font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
-  font-size: 8vw;
+  font-size: 16vmin;
   height: 100vh;
   line-height: 1;
   margin: 0;
@@ -21,16 +21,21 @@ body {
 .row:first-child {
   flex-grow: 1;
 }
-#indicator {
+#indicator__first {
   background-image: linear-gradient(45deg, hsl(0, 0%, 25%), hsl(0, 0%, 50%));
-  border-radius: 4vw;
-  text-align: center;
+  border-radius: 4vmin;
 }
-#indicator,
+#indicator__last {
+  font-size: 4vmin;
+  opacity: 0.5;
+  padding: 2vmin;
+  text-align: center;
+  white-space: pre-line;
+}
+#indicator__first,
 #minutes,
 #seconds {
-  font-size: 16vw;
-  padding: 4vw;
+  padding: 2vmin;
 }
 #start {
   text-align: right;
@@ -38,10 +43,7 @@ body {
 #start,
 #stop {
   cursor: pointer;
-  padding: 4vw;
+  font-size: 4vmin;
+  padding: 2vmin;
   width: 50%;
-}
-#indicator__last {
-  font-size: 2vw;
-  white-space: pre-line;
 }

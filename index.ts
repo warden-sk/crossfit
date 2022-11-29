@@ -25,12 +25,12 @@ const secondsPerRound: number | undefined = toNumber(
 );
 
 const workoutName: string =
-  url.searchParams.get("workoutName") ?? "EveryMinuteOnTheMinuteTimer";
+  url.searchParams.get("workoutName") ?? "EveryMinuteOnTheMinute";
 
 const workouts: {
   [workoutName: string]: [new (...$: any[]) => Timer, any[]]; //dokončiť
 } = {
-  EveryMinuteOnTheMinuteTimer: [
+  EveryMinuteOnTheMinute: [
     EveryMinuteOnTheMinuteTimer,
     [nodes, rounds, secondsPerRound],
   ],
