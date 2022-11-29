@@ -4,8 +4,8 @@
 
 import Timer from "./Timer.js";
 
-const firstIndicator = document.querySelector("#indicator__first");
-const lastIndicator = document.querySelector("#indicator__last");
+const indicator = document.querySelector("#indicator");
+const text = document.querySelector("#text");
 
 class EveryMinuteOnTheMinuteTimer extends Timer {
   private currentRound: number = 0;
@@ -17,17 +17,17 @@ class EveryMinuteOnTheMinuteTimer extends Timer {
   ) {
     super(nodes);
 
-    firstIndicator &&
-      (firstIndicator.textContent = this.currentRound.toString());
-    lastIndicator &&
-      (lastIndicator.textContent = `of ${rounds} round(s)\n${secondsPerRound} second(s) per round`);
+    indicator &&
+      (indicator.textContent = this.currentRound.toString());
+    text &&
+      (text.textContent = `of ${rounds} round(s)\n${secondsPerRound} second(s) per round`);
   }
 
   addRound() {
     this.currentRound++;
 
-    firstIndicator &&
-      (firstIndicator.textContent = this.currentRound.toString());
+    indicator &&
+      (indicator.textContent = this.currentRound.toString());
 
     if (this.currentRound === this.rounds) {
       this.stop();
@@ -50,8 +50,8 @@ class EveryMinuteOnTheMinuteTimer extends Timer {
     if (this.currentRound === this.rounds) {
       this.currentRound = 0;
 
-      firstIndicator &&
-        (firstIndicator.textContent = this.currentRound.toString());
+      indicator &&
+        (indicator.textContent = this.currentRound.toString());
     }
   }
 }

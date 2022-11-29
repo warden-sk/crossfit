@@ -8,6 +8,7 @@ declare class Timer {
     private nodes;
     seconds: number;
     private interval?;
+    private last;
     constructor(nodes: TimerNodes, seconds?: number);
     enhanceSeconds(seconds: number): number;
     start(ms?: number): void;

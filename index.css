@@ -8,6 +8,17 @@ body {
   margin: 0;
   width: 100vw;
 }
+#indicator {
+  background-image: linear-gradient(45deg, hsl(0, 0%, 25%), hsl(0, 0%, 50%));
+  border-radius: 4vmin;
+}
+#text {
+  font-size: 4vmin;
+  opacity: 0.5;
+  padding: 2vmin;
+  text-align: center;
+  white-space: pre-line;
+}
 .container {
   display: flex;
   flex-direction: column;
@@ -18,21 +29,8 @@ body {
   display: flex;
   justify-content: center;
 }
-.row:first-child {
-  flex-grow: 1;
-}
-#indicator__first {
-  background-image: linear-gradient(45deg, hsl(0, 0%, 25%), hsl(0, 0%, 50%));
-  border-radius: 4vmin;
-}
-#indicator__last {
-  font-size: 4vmin;
-  opacity: 0.5;
-  padding: 2vmin;
-  text-align: center;
-  white-space: pre-line;
-}
-#indicator__first,
+/**/
+#indicator,
 #minutes,
 #seconds {
   padding: 2vmin;
@@ -46,4 +44,7 @@ body {
   font-size: 4vmin;
   padding: 2vmin;
   width: 50%;
+}
+.row:first-child {
+  flex-grow: 1;
 }
