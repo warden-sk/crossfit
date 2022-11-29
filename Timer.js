@@ -2,11 +2,11 @@
  * Copyright 2022 Marek Kobida
  */
 class Timer {
-    elements;
+    nodes;
     seconds;
     interval;
-    constructor(elements, seconds = 0) {
-        this.elements = elements;
+    constructor(nodes, seconds = 0) {
+        this.nodes = nodes;
         this.seconds = seconds;
     }
     enhanceSeconds(seconds) {
@@ -28,11 +28,9 @@ class Timer {
     updateTime(seconds) {
         this.seconds = this.enhanceSeconds(seconds);
         const m = ~~(this.seconds / 60);
-        this.elements.m &&
-            (this.elements.m.textContent = m < 10 ? `0${m}` : `${m}`);
+        this.nodes.m && (this.nodes.m.textContent = m < 10 ? `0${m}` : `${m}`);
         const s = this.seconds - m * 60;
-        this.elements.s &&
-            (this.elements.s.textContent = s < 10 ? `0${s}` : `${s}`);
+        this.nodes.s && (this.nodes.s.textContent = s < 10 ? `0${s}` : `${s}`);
     }
 }
 export default Timer;

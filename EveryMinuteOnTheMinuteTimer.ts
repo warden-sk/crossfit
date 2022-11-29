@@ -10,11 +10,11 @@ class EveryMinuteOnTheMinuteTimer extends Timer {
   private currentRound: number = 0;
 
   constructor(
-    elements: { m: HTMLElement; s: HTMLElement },
+    nodes: { m: Node; s: Node },
     private rounds: number,
     private secondsPerRound: number = 60
   ) {
-    super(elements);
+    super(nodes);
   }
 
   addRound() {

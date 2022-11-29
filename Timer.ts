@@ -6,7 +6,7 @@ class Timer {
   private interval?: number;
 
   constructor(
-    private elements: { m: HTMLElement; s: HTMLElement },
+    private nodes: { m: Node; s: Node },
     public seconds: number = 0
   ) {}
 
@@ -37,13 +37,11 @@ class Timer {
 
     const m = ~~(this.seconds / 60);
 
-    this.elements.m &&
-      (this.elements.m.textContent = m < 10 ? `0${m}` : `${m}`);
+    this.nodes.m && (this.nodes.m.textContent = m < 10 ? `0${m}` : `${m}`);
 
     const s = this.seconds - m * 60;
 
-    this.elements.s &&
-      (this.elements.s.textContent = s < 10 ? `0${s}` : `${s}`);
+    this.nodes.s && (this.nodes.s.textContent = s < 10 ? `0${s}` : `${s}`);
   }
 }
 

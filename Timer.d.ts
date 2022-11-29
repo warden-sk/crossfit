@@ -1,10 +1,10 @@
 declare class Timer {
-    private elements;
+    private nodes;
     seconds: number;
     private interval?;
-    constructor(elements: {
-        m: HTMLElement;
-        s: HTMLElement;
+    constructor(nodes: {
+        m: Node;
+        s: Node;
     }, seconds?: number);
     enhanceSeconds(seconds: number): number;
     start(ms?: number): void;

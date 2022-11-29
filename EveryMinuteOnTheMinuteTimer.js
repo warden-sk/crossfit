@@ -7,8 +7,8 @@ class EveryMinuteOnTheMinuteTimer extends Timer {
     rounds;
     secondsPerRound;
     currentRound = 0;
-    constructor(elements, rounds, secondsPerRound = 60) {
-        super(elements);
+    constructor(nodes, rounds, secondsPerRound = 60) {
+        super(nodes);
         this.rounds = rounds;
         this.secondsPerRound = secondsPerRound;
     }
