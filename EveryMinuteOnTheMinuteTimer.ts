@@ -4,13 +4,13 @@
 
 import Timer from "./Timer.js";
 
-const INDICATOR_ELEMENT = document.getElementById("indicator");
+const INDICATOR_ELEMENT = document.querySelector("#indicator");
 
 class EveryMinuteOnTheMinuteTimer extends Timer {
   private currentRound: number = 0;
 
   constructor(
-    nodes: { m: Node; s: Node },
+    nodes: Timer["nodes"],
     private rounds: number = 10,
     private secondsPerRound: number = 60
   ) {

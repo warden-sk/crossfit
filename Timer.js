@@ -28,9 +28,11 @@ class Timer {
     updateTime(seconds) {
         this.seconds = this.enhanceSeconds(seconds);
         const m = ~~(this.seconds / 60);
-        this.nodes.m && (this.nodes.m.textContent = m < 10 ? `0${m}` : `${m}`);
+        this.nodes.minutes &&
+            (this.nodes.minutes.textContent = m < 10 ? `0${m}` : `${m}`);
         const s = this.seconds - m * 60;
-        this.nodes.s && (this.nodes.s.textContent = s < 10 ? `0${s}` : `${s}`);
+        this.nodes.seconds &&
+            (this.nodes.seconds.textContent = s < 10 ? `0${s}` : `${s}`);
     }
 }
 export default Timer;

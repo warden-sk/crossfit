@@ -2,7 +2,7 @@
  * Copyright 2022 Marek Kobida
  */
 import Timer from "./Timer.js";
-const INDICATOR_ELEMENT = document.getElementById("indicator");
+const INDICATOR_ELEMENT = document.querySelector("#indicator");
 class EveryMinuteOnTheMinuteTimer extends Timer {
     rounds;
     secondsPerRound;

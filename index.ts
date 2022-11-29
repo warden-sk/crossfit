@@ -13,18 +13,22 @@ function toNumber(input: null | string): number | undefined {
   }
 }
 
-const nodes = {
-  m: document.querySelector("#minutes")!,
-  s: document.querySelector("#seconds")!,
+const nodes: Timer["nodes"] = {
+  minutes: document.querySelector("#minutes")!,
+  seconds: document.querySelector("#seconds")!,
+  startButton: document.querySelector("#start")!,
+  stopButton: document.querySelector("#stop")!,
 };
-const rounds = toNumber(url.searchParams.get("rounds"));
-const secondsPerRound = toNumber(url.searchParams.get("secondsPerRound"));
+const rounds: number | undefined = toNumber(url.searchParams.get("rounds"));
+const secondsPerRound: number | undefined = toNumber(
+  url.searchParams.get("secondsPerRound")
+);
 
-const workoutName =
+const workoutName: string =
   url.searchParams.get("workoutName") ?? "EveryMinuteOnTheMinuteTimer";
 
 const workouts: {
-  [workoutName: string]: new (nodes: { m: Node; s: Node }) => Timer;
+  [workoutName: string]: new (nodes: Timer["nodes"]) => Timer;
 } = { EveryMinuteOnTheMinuteTimer };
 
 const workoutByName = workouts[workoutName];
@@ -33,9 +37,5 @@ const workout = workoutByName
   ? new workoutByName(nodes)
   : new EveryMinuteOnTheMinuteTimer(nodes, rounds, secondsPerRound);
 
-document
-  .getElementById("start")
-  ?.addEventListener("click", () => workout.start());
-document
-  .getElementById("stop")
-  ?.addEventListener("click", () => workout.stop());
+nodes.startButton?.addEventListener("click", () => workout.start());
+nodes.stopButton?.addEventListener("click", () => workout.stop());

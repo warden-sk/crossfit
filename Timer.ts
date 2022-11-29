@@ -2,13 +2,17 @@
  * Copyright 2022 Marek Kobida
  */
 
+interface TimerNodes {
+  minutes?: Node;
+  seconds?: Node;
+  startButton?: Node;
+  stopButton?: Node;
+}
+
 class Timer {
   private interval?: number;
 
-  constructor(
-    private nodes: { m: Node; s: Node },
-    public seconds: number = 0
-  ) {}
+  constructor(private nodes: TimerNodes, public seconds: number = 0) {}
 
   enhanceSeconds(seconds: number): number {
     return seconds;
@@ -37,11 +41,13 @@ class Timer {
 
     const m = ~~(this.seconds / 60);
 
-    this.nodes.m && (this.nodes.m.textContent = m < 10 ? `0${m}` : `${m}`);
+    this.nodes.minutes &&
+      (this.nodes.minutes.textContent = m < 10 ? `0${m}` : `${m}`);
 
     const s = this.seconds - m * 60;
 
-    this.nodes.s && (this.nodes.s.textContent = s < 10 ? `0${s}` : `${s}`);
+    this.nodes.seconds &&
+      (this.nodes.seconds.textContent = s < 10 ? `0${s}` : `${s}`);
   }
 }
 

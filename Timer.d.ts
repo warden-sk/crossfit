@@ -1,11 +1,14 @@
+interface TimerNodes {
+    minutes?: Node;
+    seconds?: Node;
+    startButton?: Node;
+    stopButton?: Node;
+}
 declare class Timer {
     private nodes;
     seconds: number;
     private interval?;
-    constructor(nodes: {
-        m: Node;
-        s: Node;
-    }, seconds?: number);
+    constructor(nodes: TimerNodes, seconds?: number);
     enhanceSeconds(seconds: number): number;
     start(ms?: number): void;
     stop(): void;

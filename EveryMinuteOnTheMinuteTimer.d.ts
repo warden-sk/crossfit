@@ -3,10 +3,7 @@ declare class EveryMinuteOnTheMinuteTimer extends Timer {
     private rounds;
     private secondsPerRound;
     private currentRound;
-    constructor(nodes: {
-        m: Node;
-        s: Node;
-    }, rounds?: number, secondsPerRound?: number);
+    constructor(nodes: Timer["nodes"], rounds?: number, secondsPerRound?: number);
     addRound(): void;
     enhanceSeconds(seconds: number): number;
     start(): void;
